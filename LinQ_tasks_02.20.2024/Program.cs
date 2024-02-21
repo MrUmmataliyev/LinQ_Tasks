@@ -7,10 +7,7 @@ namespace LinQ_tasks_02._20._2024
     {
         static void Main(string[] args)
         {
-            foreach (Buxgalter emp in Task1.GetBuxgalters())
-            {
-                Console.WriteLine($"{emp.Id} {emp.BName} {emp.ProgrammingLanguageId}");
-            }
+            Task1.KnowCoding();
         }
     }
 }

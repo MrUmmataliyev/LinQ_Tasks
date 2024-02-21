@@ -18,11 +18,38 @@ namespace LinQ_tasks_02._20._2024.Algoes
                 new Buxgalter{Id = 3,BName= "G'oppor",ProgrammingLanguageId = 1},
                 new Buxgalter{Id = 4,BName= "Umid",ProgrammingLanguageId = 2},
                 new Buxgalter{Id = 5,BName= "Rocky",ProgrammingLanguageId = 2},
-                new Buxgalter{Id = 6,BName= "Tommy",ProgrammingLanguageId = 3},
+                new Buxgalter{Id = 6,BName= "Tommy",ProgrammingLanguageId = 0},
                 new Buxgalter{Id = 6,BName= "Jon",ProgrammingLanguageId = 3}
 
             };
             return buxgalters;
+        }
+
+        public static List<ProgrammingLanguage> GetProgrammingLanguages()
+        {
+            List<ProgrammingLanguage> languages = new List<ProgrammingLanguage>
+            {
+                new ProgrammingLanguage { Id = 1, Name = "C#" },
+                new ProgrammingLanguage { Id = 2, Name = "Python"},
+                new ProgrammingLanguage { Id = 3, Name = "C" }
+
+            };
+            return languages;
+        }
+
+        public static void KnowCoding()
+        {
+            var buxgalters = Task1.GetBuxgalters();
+            var languages = Task1.GetProgrammingLanguages();
+            var res= buxgalters.Join(languages, bux => bux.ProgrammingLanguageId, lan => lan.Id,
+                (bux, lan) => new { bux.Id, bux.BName, lan.Name }).ToList();
+
+            foreach (var buxgalger in res)
+            {
+                Console.WriteLine($"Buxgalter_ID:{buxgalger.Id}\nBuxgalter_name:{buxgalger.BName}\nProgramming_language_name:{buxgalger.Name}");
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine("");
+            }
         }
     }
 }
